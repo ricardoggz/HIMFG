@@ -1,0 +1,17 @@
+.navWrapper{
+    background: #222222;
+    padding:1rem 0;
+}
+.navItemsWrapper{
+    color:#fff;
+    display:flex;
+    justify-content: space-between;
+    margin:0 auto;
+    max-width: 90%;
+}
+.navLinks{
+    display:flex;
+    gap:1rem;
+    justify-content: space-between;
+    list-style: none;
+}
