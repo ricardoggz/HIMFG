@@ -3,3 +3,15 @@
     margin:0;
     padding: 0;
 }
+:root{
+    --red-primary:#9e1f47;
+    --black-primary:#1b1b1b;
+    --black-secondary:#515151;
+    --white-primary:#f4f4f4;
+    --white-secondary:#e2e2e2;
+    --green-primary:#0c231e;
+    --green-secondary:#13322b;
+    --blue-primary:#165198;
+    --blue-secondary:#35A1C6;
+    --golden-primary:#dac5a0;
+  }
