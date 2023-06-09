@@ -45,6 +45,14 @@
     object-fit: cover;
     width:100%;
 }
+.disabledLink{
+    background: var(--black-secondary);
+    border:none;
+    color:var(--white-primary);
+    padding:0.3rem;
+    pointer-events: none;
+    width:100%;
+}
 @media (min-width:240px) and (max-width:850px){
     .cardButtons{
         flex-direction: column;

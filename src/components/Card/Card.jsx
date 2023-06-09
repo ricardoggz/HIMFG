@@ -1,20 +1,15 @@
 import { useContext } from 'react'
-import Swal from 'sweetalert2'
 import Image from 'next/image'
-import withReactContent from 'sweetalert2-react-content'
-import { formatDate } from '@/helpers'
+import { openModal } from './openModal'
 import { CourseContext } from '@/contexts'
 import {
     cardWrapper,
     cardButton,
     cardTitle,
-    cardIframe,
     cardButtons,
-    cardDate,
     cardImage
 } from './card.module.css'
 
-const modal = withReactContent(Swal)
 export const Card = ({course})=>{
     const {login} = useContext(CourseContext)
     return (
@@ -50,29 +45,3 @@ export const Card = ({course})=>{
         </div>
     )
 }
-const openModal = ({course})=>(
-    modal.fire({
-        title: course.course_name,
-        html:
-        <div className={cardWrapper}>
-            <span>Programa:</span>
-            <iframe
-                src={course.course_pdf}
-                className={cardIframe}
-            />
-            <span className={cardDate}>
-                Inicia: {formatDate(course.course_start_date)}
-            </span>
-            <span className={cardDate}>
-                Termina: {formatDate(course.course_finish_date)}
-            </span>
-            <a href='#' className={cardButton}>
-                Ingresar
-            </a>
-        </div>,
-        showCloseButton: true,
-        showCancelButton: false,
-        showConfirmButton: false,
-        width:1000
-    })
-)
