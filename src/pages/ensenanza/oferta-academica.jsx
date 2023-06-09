@@ -15,10 +15,7 @@ const AcademicOffer = ()=>{
                     data.map((course)=>(
                         <Card
                             key={course.course_id}
-                            courseName={course.course_name}
-                            startDate={course.course_start_date}
-                            finishDate={course.course_finish_date}
-                            coursePDF={course.course_pdf}
+                            course={course}
                         />
                     ))
                     :

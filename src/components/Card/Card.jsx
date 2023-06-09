@@ -1,5 +1,7 @@
+import { useContext } from 'react'
 import withReactContent from 'sweetalert2-react-content'
 import Swal from 'sweetalert2'
+import { CourseContext } from '@/contexts'
 import {
     cardWrapper,
     cardButton,
@@ -8,30 +10,36 @@ import {
 } from './card.module.css'
 
 const modal = withReactContent(Swal)
-export const Card = ({courseName, startDate, finishDate, coursePDF})=>{
+export const Card = ({course})=>{
+    const {login} = useContext(CourseContext)
     return (
         <div className={cardWrapper}>
             <h3 className={cardTitle}>
-                {courseName}
+                {course.course_name}
             </h3>
-            <span>{startDate}</span>
-            <span>{finishDate}</span>
-            <button className={cardButton} onClick={()=>openModal({
-                courseName, startDate, finishDate, coursePDF
-            })}>
-                Consultar detalles
-            </button>
+            <span>{course.course_start_date}</span>
+            <span>{course.course_finish_date}</span>
+            <div>
+                <button className={cardButton} onClick={()=>openModal({course})}>
+                    Consultar detalles
+                </button>
+                <button
+                    className={cardButton}
+                    onClick={()=>login(course)}>
+                    Inscripción
+                </button>
+            </div>
         </div>
     )
 }
-const openModal = ({courseName, startDate, finishDate, coursePDF})=>(
+const openModal = ({course})=>(
     modal.fire({
-        title: courseName,
+        title: course.course_name,
         html:
         <div className={cardWrapper}>
             <span>Programa:</span>
             <iframe
-                src={coursePDF}
+                src={course.course_pdf}
                 className={cardIframe}
             />
             <a href='#' className={cardButton}>
