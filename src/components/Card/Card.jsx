@@ -1,12 +1,15 @@
 import { useContext } from 'react'
 import withReactContent from 'sweetalert2-react-content'
 import Swal from 'sweetalert2'
+import { formatDate } from '@/helpers'
 import { CourseContext } from '@/contexts'
 import {
     cardWrapper,
     cardButton,
     cardTitle,
-    cardIframe
+    cardIframe,
+    cardButtons,
+    cardDate
 } from './card.module.css'
 
 const modal = withReactContent(Swal)
@@ -17,9 +20,7 @@ export const Card = ({course})=>{
             <h3 className={cardTitle}>
                 {course.course_name}
             </h3>
-            <span>{course.course_start_date}</span>
-            <span>{course.course_finish_date}</span>
-            <div>
+            <div className={cardButtons}>
                 <button className={cardButton} onClick={()=>openModal({course})}>
                     Consultar detalles
                 </button>
@@ -42,6 +43,12 @@ const openModal = ({course})=>(
                 src={course.course_pdf}
                 className={cardIframe}
             />
+            <span className={cardDate}>
+                Inicia: {formatDate(course.course_start_date)}
+            </span>
+            <span className={cardDate}>
+                Termina: {formatDate(course.course_finish_date)}
+            </span>
             <a href='#' className={cardButton}>
                 Ingresar
             </a>
