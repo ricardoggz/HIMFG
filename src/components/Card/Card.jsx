@@ -1,6 +1,7 @@
 import { useContext } from 'react'
-import withReactContent from 'sweetalert2-react-content'
 import Swal from 'sweetalert2'
+import Image from 'next/image'
+import withReactContent from 'sweetalert2-react-content'
 import { formatDate } from '@/helpers'
 import { CourseContext } from '@/contexts'
 import {
@@ -9,7 +10,8 @@ import {
     cardTitle,
     cardIframe,
     cardButtons,
-    cardDate
+    cardDate,
+    cardImage
 } from './card.module.css'
 
 const modal = withReactContent(Swal)
@@ -17,6 +19,21 @@ export const Card = ({course})=>{
     const {login} = useContext(CourseContext)
     return (
         <div className={cardWrapper}>
+            <figure className={cardImage}>
+            <Image
+                src={
+                    !course.course_image ?
+                    `${process.env.BASE_URL_IMAGE}`
+                    :
+                    course.course_image
+                }
+                loading='lazy'
+                alt='No se pudo cargar la imágen'
+                width={1000}
+                height={150}
+                quality
+                />
+            </figure>
             <h3 className={cardTitle}>
                 {course.course_name}
             </h3>

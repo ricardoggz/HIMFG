@@ -17,5 +17,5 @@
 }
 .flexContainer{
     margin: 0 auto;
-    width:95%;
+    max-width:95%;
 }
