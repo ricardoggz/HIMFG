@@ -1,4 +1,4 @@
-import { Card } from "@/components"
+import { Card, Section, Title } from "@/components"
 import { useFetch } from "@/hooks"
 import { coursesContainer } from './oferta.module.css'
 
@@ -7,9 +7,9 @@ const AcademicOffer = ()=>{
         url:'https://courses-rest-api-hospital.vercel.app/api/courses/all-courses'
     })
     return (
-        <>
-            <h1>Oferta académica</h1>
-            <div className={coursesContainer}>
+        <Section>
+            <Title title='Oferta académica del HIMFG'/>
+            <div className={`${coursesContainer} flexContainer`}>
                 {
                     !loading && data ?
                     data.map((course)=>(
@@ -22,7 +22,7 @@ const AcademicOffer = ()=>{
                     <span>Cargando oferta académica</span>
                 }
             </div>
-        </>
+        </Section>
     )
 }
 export default AcademicOffer
